@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Chair care</title>
+<!--Based on -->
+<!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+
+<!--Future work https://sweetalert2.github.io/#download -->
+<script>
+function load_data() {
+
+var seconds = window.prompt("How many seconds?","0");
+var minutes = window.prompt("How many minutes?","0");
+var hours   = window.prompt("How many hours?","0");
+
+
+//https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
+localStorage.setItem('seconds', seconds)
+localStorage.setItem('minutes', minutes)
+localStorage.setItem('hours', hours)
+
+
+}
+</script>
+</head>
+
+<body>
+
+<input type="button" value="Set up timer" onclick="load_data()">
+
+<h1></h1>
+
+
+<p id="demo"></p>
+
+<script>
+// Set the date we're counting down to
+
+var hours = localStorage.getItem('hours');
+var minutes = localStorage.getItem('minutes');
+var seconds = localStorage.getItem('seconds');
+
+
+var now = new Date().getTime();
+var countDownDate = now + seconds*1000 +minutes*60*1000 + hours*3600*1000;
+
+
+// Update the count down every 1 second
+
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+//  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  document.getElementById("demo").innerHTML = hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  if ((distance > 1000*60*5) && (distance < 1000*61*5)) {
+//https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate
+    window.navigator.vibrate(200);
+//    alert ("5 minutu!");
+ }
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+<hr>
+<address></address>
+<!-- hhmts start -->Last modified: Fri Apr 10 21:30:06 CEST 2020 <!-- hhmts end -->
+</body> </html>
