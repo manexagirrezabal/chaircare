@@ -89,6 +89,7 @@ var x = setInterval(function() {
     
   // If the count down is over, write some text 
   if (distance < 0) {
+    navigator.vibrate(1000);
     clearInterval(x);
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
@@ -97,5 +98,5 @@ var x = setInterval(function() {
 
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Sat Apr 11 12:04:16 CEST 2020 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Apr 11 12:08:07 CEST 2020 <!-- hhmts end -->
 </body> </html>
