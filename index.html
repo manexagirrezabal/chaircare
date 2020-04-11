@@ -26,6 +26,15 @@ localStorage.setItem('seconds', seconds)
 localStorage.setItem('minutes', minutes)
 localStorage.setItem('hours', hours)
 
+alert (navigator);
+if ("vibrate" in navigator) {
+	// vibration API supported
+  document.getElementById("semiterm").innerHTML = "I can vibrate!";
+  navigator.vibrate(500);
+}
+else {
+  document.getElementById("semiterm").innerHTML = "I can't vibrate!";  
+}
 
 }
 </script>
@@ -34,7 +43,7 @@ localStorage.setItem('hours', hours)
 <body>
 
 <input type="button" value="Set up timer" onclick="load_data()">
-
+<p id="semiterm"></p>
 <h1></h1>
 
 
@@ -88,5 +97,5 @@ var x = setInterval(function() {
 
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Fri Apr 10 21:30:06 CEST 2020 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Apr 11 12:04:16 CEST 2020 <!-- hhmts end -->
 </body> </html>
